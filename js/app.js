@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Videos con rutas correctas según tu estructura
+    
     const videos = [
         {
             title: "Cris MJ - Party MJ (Video Oficial)",
@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded', function() {
             views: "45M",
             time: "hace 3 meses",
             duration: "3:45",
-            videoFile: "assets/videos/party-mj-video-oficial---cris-mj.mp4",
-            videoFileOptimized: "assets/videos/videosOptimizados/Cris MJ - Party MJ (Video Oficial).webm",
+            videoFile: "assets/videos/Cris MJ - Party MJ (Video Oficial).webm",
+            videoFileOptimized: "assets/videos/videosOptimizados/party-mj-video-oficial---cris-mj.mp4",
             thumbnail: {
                 original: "assets/thumbnails/oxy.jpg",
                 optimized: "assets/thumbnails/Optimizadas/oxy.avif",
@@ -45,8 +45,8 @@ document.addEventListener('DOMContentLoaded', function() {
             views: "780M",
             time: "hace 2 años",
             duration: "3:16",
-            videoFile: "assets/videos/Roddy Ricch - The Box [Official Music Video].mp4", // Nota: Este archivo no aparece en tu estructura
-            videoFileOptimized: "assets/videos/videosOptimizados/avi.AVI",
+            videoFile: "assets/videos/Eminem - Without Me (Official Music Video) [1].mp4",
+            videoFileOptimized: "assets/videos/videosOptimizados/Eminem - Without Me (Official Music Video).mp4",
             thumbnail: {
                 original: "assets/thumbnails/box.jpg",
                 optimized: "assets/thumbnails/Optimizadas/box.avif",
