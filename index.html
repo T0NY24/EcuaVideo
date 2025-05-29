@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcuaVideo</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        
+        .comment-avatar img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid #3d3d3d;
+        }
+
+        
+        .video-thumbnail {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/9;
+            background-color: #333;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        
+        .search-btn {
+            background: #3d3d3d;
+            border: 1px solid #3d3d3d;
+            color: #fff;
+            padding: 8px 20px;
+            cursor: pointer;
+            border-radius: 0 2px 2px 0;
+            font-size: 16px;
+            transition: background 0.2s ease;
+        }
+
+        .search-btn:hover {
+            background: #4d4d4d;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <button class="menu-btn" id="menuBtn" aria-label="Menú">☰</button>
+            <a href="index.html" class="logo">
+                <div class="logo-icon" aria-hidden="true">▶</div>
+                <span class="logo-text">EcuaVideo</span>
+            </a>
+        </div>
+        
+        <div class="header-center">
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Buscar" id="searchInput" aria-label="Buscar en YouTube">
+                <button class="search-btn" id="searchBtn" aria-label="Buscar">
+                    <span aria-hidden="true">🔍</span>
+                </button>
+            </div>
+        </div>
+        
+        <div class="header-right">
+            <button class="icon-btn" aria-label="Crear">📹</button>
+            <button class="icon-btn" aria-label="Notificaciones">🔔</button>
+            <div class="comment-avatar">
+                <picture>
+                    <source srcset="assets/img/ImagenesOptimizadas/2.webp" type="image/webp">
+                    <img src="assets/img/ImagenesOriginales/usuario.jpg" alt="Avatar del usuario" loading="lazy">
+                </picture>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <nav class="sidebar" id="sidebar" aria-label="Menú de navegación">
+        <div class="sidebar-section">
+            <a href="#" class="sidebar-item active">
+                <span aria-hidden="true">🏠</span> Inicio
+            </a>
+            <a href="#" class="sidebar-item">
+                <span aria-hidden="true">📺</span> Shorts
+            </a>
+            <a href="#" class="sidebar-item">
+                <span aria-hidden="true">📚</span> Suscripciones
+            </a>
+        </div>
+        
+        <div class="sidebar-divider"></div>
+        
+        <div class="sidebar-section">
+            <a href="#" class="sidebar-item">
+                <span aria-hidden="true">📖</span> Biblioteca
+            </a>
+            <a href="#" class="sidebar-item">
+                <span aria-hidden="true">🕒</span> Historial
+            </a>
+            <a href="#" class="sidebar-item">
+                <span aria-hidden="true">▶️</span> Tus videos
+            </a>
+            <a href="#" class="sidebar-item">
+                <span aria-hidden="true">⏰</span> Ver más tarde
+            </a>
+            <a href="#" class="sidebar-item">
+                <span aria-hidden="true">👍</span> Videos que te gustaron
+            </a>
+        </div>
+        
+        <div class="sidebar-divider"></div>
+        
+        <div class="sidebar-section">
+            <a href="#" class="sidebar-item">
+                <span aria-hidden="true">🔥</span> Tendencias
+            </a>
+            <a href="#" class="sidebar-item">
+                <span aria-hidden="true">🎵</span> Música
+            </a>
+            <a href="#" class="sidebar-item">
+                <span aria-hidden="true">🎮</span> Videojuegos
+            </a>
+            <a href="#" class="sidebar-item">
+                <span aria-hidden="true">📰</span> Noticias
+            </a>
+            <a href="#" class="sidebar-item">
+                <span aria-hidden="true">⚽</span> Deportes
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content" id="mainContent">
+        <!-- Category Pills -->
+        <div class="category-pills" role="tablist">
+            <button class="category-pill active" role="tab" aria-selected="true">Todo</button>
+            <button class="category-pill" role="tab" aria-selected="false">Música</button>
+            <button class="category-pill" role="tab" aria-selected="false">Video</button>
+        </div>
+
+        <!-- Video Grid -->
+        <div class="video-grid" id="videoGrid" role="grid">
+            <!-- Los videos se cargarán dinámicamente aquí con JavaScript -->
+        </div>
+    </main>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

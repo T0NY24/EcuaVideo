@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Video - YouTube</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        /* Estilos principales */
+        .video-detail-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+        
+        .main-video {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #000;
+            border-radius: 8px;
+            outline: none;
+        }
+        
+        .video-info {
+            margin-top: 20px;
+            border-bottom: 1px solid #3d3d3d;
+            padding-bottom: 20px;
+        }
+        
+        .video-title {
+            font-size: 22px;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+        
+        .video-stats {
+            color: #aaa;
+            font-size: 14px;
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+        
+        .video-actions {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .action-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #3d3d3d;
+            border: none;
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.2s ease;
+        }
+        
+        .action-btn:hover {
+            background: #4d4d4d;
+        }
+        
+        /* Estilos para información del canal */
+        .channel-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #3d3d3d;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .channel-details {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .channel-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        
+        .channel-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .channel-meta {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .subscribe-btn {
+            background: #cc0000;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 2px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.2s ease;
+        }
+        
+        .subscribe-btn:hover {
+            background: #e60000;
+        }
+        
+        /* Estilos para sección de comentarios */
+        .comments-section {
+            margin-top: 30px;
+        }
+        
+        .comments-header {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .comment-count {
+            font-size: 18px;
+            font-weight: 500;
+        }
+        
+        .comment-sort {
+            color: #aaa;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .comment-form {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .comment-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        
+        .comment-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .comment-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #3d3d3d;
+            color: white;
+            padding: 10px 0;
+            outline: none;
+            font-size: 14px;
+        }
+        
+        .comment-input:focus {
+            border-bottom-color: #606060;
+        }
+        
+        .comment {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .comment-content {
+            flex: 1;
+        }
+        
+        .comment-author {
+            font-weight: 500;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .comment-time {
+            color: #aaa;
+            font-size: 12px;
+            font-weight: normal;
+        }
+        
+        .comment-text {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+        
+        .comment-actions {
+            display: flex;
+            gap: 15px;
+            color: #aaa;
+            font-size: 12px;
+        }
+        
+        .comment-action {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+        }
+        
+        /* Estilos responsive */
+        @media (max-width: 768px) {
+            .video-actions {
+                gap: 10px;
+            }
+            
+            .action-btn {
+                padding: 6px 12px;
+                font-size: 13px;
+            }
+            
+            .channel-info {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .subscribe-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <button class="menu-btn" id="menuBtn" aria-label="Menú">☰</button>
+            <a href="../index.html" class="logo">
+                <div class="logo-icon" aria-hidden="true">▶</div>
+                <span class="logo-text">YouTube</span>
+            </a>
+        </div>
+        
+        <div class="header-center">
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Buscar" aria-label="Buscar en YouTube">
+                <button class="search-btn" aria-label="Buscar">🔍</button>
+            </div>
+        </div>
+        
+        <div class="header-right">
+            <button class="icon-btn" aria-label="Crear">📹</button>
+            <button class="icon-btn" aria-label="Notificaciones">🔔</button>
+            <div class="comment-avatar">
+                <picture>
+                    <source srcset="../assets/img/ImagenesOptimizadas/2.webp" type="image/webp">
+                    <img src="../assets/img/ImagenesOriginales/usuario.jpg" alt="Avatar del usuario" loading="lazy">
+                </picture>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+        <div class="video-detail-container">
+            <!-- Reproductor de video -->
+            <video controls class="main-video" id="videoPlayer" preload="metadata" playsinline>
+                <source id="videoSource" type="video/mp4">
+                <source id="videoSourceOpt" type="video/webm">
+                Tu navegador no soporta el elemento de video.
+            </video>
+            
+            <!-- Información del video -->
+            <div class="video-info">
+                <h1 class="video-title" id="videoTitle"></h1>
+                <div class="video-stats">
+                    <span id="videoViews"></span>
+                    <span id="videoDate"></span>
+                </div>
+                
+                <div class="video-actions">
+                    <button class="action-btn">
+                        <span aria-hidden="true">👍</span> Me gusta
+                    </button>
+                    <button class="action-btn">
+                        <span aria-hidden="true">👎</span> No me gusta
+                    </button>
+                    <button class="action-btn">
+                        <span aria-hidden="true">↗️</span> Compartir
+                    </button>
+                    <button class="action-btn">
+                        <span aria-hidden="true">➕</span> Guardar
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Información del canal -->
+            <div class="channel-info">
+                <div class="channel-details">
+                    <div class="channel-avatar" id="channelAvatar">
+                        <picture>
+                            <source srcset="../assets/img/ImagenesOptimizadas/2.webp" type="image/webp">
+                            <img src="../assets/img/ImagenesOriginales/kevin.jpeg" alt="Avatar del canal" loading="lazy">
+                        </picture>
+                    </div>
+                    <div class="channel-meta">
+                        <div id="channelName"></div>
+                        <div class="video-stats">1.2M suscriptores</div>
+                    </div>
+                </div>
+                <button class="subscribe-btn">SUSCRIBIRSE</button>
+            </div>
+            
+            <!-- Sección de comentarios -->
+            <div class="comments-section">
+                <div class="comments-header">
+                    <div class="comment-count">456 Comentarios</div>
+                    <div class="comment-sort">
+                        <span aria-hidden="true">▼</span> Ordenar por
+                    </div>
+                </div>
+                
+                <div class="comment-form">
+                    <div class="comment-avatar">
+                        <picture>
+                            <source srcset="../assets/img/ImagenesOptimizadas/2.webp" type="image/webp">
+                            <img src="../assets/img/ImagenesOriginales/usuario.jpg" alt="Tu avatar" loading="lazy">
+                        </picture>
+                    </div>
+                    <input type="text" class="comment-input" placeholder="Añade un comentario público...">
+                </div>
+                
+                <!-- Comentario de ejemplo 1 -->
+                <div class="comment">
+                    <div class="comment-avatar">
+                        <picture>
+                            <source srcset="../assets/img/ImagenesOptimizadas/2.webp" type="image/webp">
+                            <img src="../assets/img/ImagenesOriginales/kevin.jpeg" alt="Avatar de Kevin Poma" loading="lazy">
+                        </picture>
+                    </div>
+                    <div class="comment-content">
+                        <div class="comment-author">
+                            Kevin Poma
+                            <span class="comment-time">hace 2 días</span>
+                        </div>
+                        <div class="comment-text">Este video es increíble! La mejor canción del artista sin duda.</div>
+                        <div class="comment-actions">
+                            <div class="comment-action">
+                                <span aria-hidden="true">👍</span> 245
+                            </div>
+                            <div class="comment-action">
+                                <span aria-hidden="true">👎</span> 2
+                            </div>
+                            <div class="comment-action">RESPONDER</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Comentario de ejemplo 2 -->
+                <div class="comment">
+                    <div class="comment-avatar">
+                        <picture>
+                            <source srcset="../assets/img/ImagenesOptimizadas/1.avif" type="image/avif">
+                            <img src="../assets/img/ImagenesOriginales/UsuarioSimplificado.png" alt="Avatar de Daddy Acacho" loading="lazy">
+                        </picture>
+                    </div>
+                    <div class="comment-content">
+                        <div class="comment-author">
+                            Daddy Acacho
+                            <span class="comment-time">hace 1 semana</span>
+                        </div>
+                        <div class="comment-text">El drop a los 1:45 es lo mejor que he escuchado este año! La producción es de otro nivel.</div>
+                        <div class="comment-actions">
+                            <div class="comment-action">
+                                <span aria-hidden="true">👍</span> 189
+                            </div>
+                            <div class="comment-action">
+                                <span aria-hidden="true">👎</span> 0
+                            </div>
+                            <div class="comment-action">RESPONDER</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Obtener parámetros de la URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const videoFile = urlParams.get('v');
+        const videoFileOpt = urlParams.get('v_opt');
+        const videoTitle = urlParams.get('title');
+        const channelName = urlParams.get('channel');
+        const views = urlParams.get('views');
+        const date = urlParams.get('date');
+        
+        // Configurar el video
+        if (videoFile) {
+            const videoPlayer = document.getElementById('videoPlayer');
+            const videoSource = document.getElementById('videoSource');
+            const videoSourceOpt = document.getElementById('videoSourceOpt');
+            
+            // Configurar fuentes de video
+            if (videoFileOpt) {
+                videoSourceOpt.src = '../' + videoFileOpt;
+            }
+            videoSource.src = '../' + videoFile;
+            
+            // Cargar metadatos
+            videoPlayer.load();
+            
+            // Configurar información del video
+            document.getElementById('videoTitle').textContent = videoTitle ? decodeURIComponent(videoTitle) : 'Video';
+            document.getElementById('channelName').textContent = channelName ? decodeURIComponent(channelName) : 'Canal';
+            document.getElementById('videoViews').textContent = views ? `${views} vistas` : '1M vistas';
+            document.getElementById('videoDate').textContent = date ? `• ${date}` : '';
+            
+            // Configurar imagen de poster si está disponible
+            const thumbnail = urlParams.get('thumbnail');
+            if (thumbnail) {
+                videoPlayer.poster = '../' + thumbnail;
+            }
+        }
+    </script>
+</body>
+</html>
